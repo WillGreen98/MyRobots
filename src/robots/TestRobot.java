@@ -31,7 +31,7 @@ public class TestRobot extends AdvancedRobot {
 		setAdjustGunForRobotTurn(true);
 		setAdjustRadarForGunTurn(true);
 			
-		setBodyColor(_randColor);
+		setBodyColor(Color.BLACK);
 		setGunColor(_randColor);
 		setBulletColor(_randColor);
 		setRadarColor(_randColor);
