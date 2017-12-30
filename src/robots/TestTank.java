@@ -15,6 +15,8 @@ import robocode.ScannedRobotEvent;
 import robocode.WinEvent;
 
 public class TestTank extends AdvancedRobot {
+	Bullet bullet;
+	
 	public Color randColor() {
 		Random rand = new Random();
 		
@@ -40,9 +42,7 @@ public class TestTank extends AdvancedRobot {
 	
 	int scannedX = Integer.MIN_VALUE;
 	int scannedY = Integer.MIN_VALUE;
-	
-	Bullet bullet;
-	 
+
 	public void onScannedRobot(ScannedRobotEvent e) {
 	    double angle = Math.toRadians((getHeading() + e.getBearing()) % 360);
 	 
@@ -51,7 +51,7 @@ public class TestTank extends AdvancedRobot {
 	    
 	    double absoluteBearing = getHeading() + e.getBearing();
 		double bearingFromGun = normalRelativeAngle(absoluteBearing - getGunHeading());
-		if (getGunHeat() == 0 && bullet == null) {
+		if(getGunHeat() == 0 && bullet == null) {
 			final Bullet lbullet = fireBullet(Math.min(3 - Math.abs(bearingFromGun), getEnergy() - 1));
 			
 			bullet = lbullet;
@@ -65,7 +65,7 @@ public class TestTank extends AdvancedRobot {
 	}
 	
 	@Override
-	public void onWin(WinEvent e) {
+	public void onWin(WinEvent event) {
 		out.println("Win!");
 		
 		Color _randColor = randColor();
@@ -82,7 +82,7 @@ public class TestTank extends AdvancedRobot {
 	}
 
 	@Override
-	public void onDeath(DeathEvent e) {
+	public void onDeath(DeathEvent event) {
 		System.out.println("Dead! You were killed by: ");
 	}
 
