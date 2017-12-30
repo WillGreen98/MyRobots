@@ -14,7 +14,7 @@ import robocode.RoundEndedEvent;
 import robocode.ScannedRobotEvent;
 import robocode.WinEvent;
 
-public class TestRobot extends AdvancedRobot {
+public class TestTank extends AdvancedRobot {
 	public Color randColor() {
 		Random rand = new Random();
 		
