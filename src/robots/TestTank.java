@@ -10,12 +10,15 @@ import robocode.AdvancedRobot;
 import robocode.BattleEndedEvent;
 import robocode.Bullet;
 import robocode.DeathEvent;
+import robocode.HitRobotEvent;
+import robocode.HitWallEvent;
 import robocode.RoundEndedEvent;
 import robocode.ScannedRobotEvent;
 import robocode.WinEvent;
 
 public class TestTank extends AdvancedRobot {
 	Bullet bullet;
+	boolean g_Running = true;
 	
 	public Color randColor() {
 		Random rand = new Random();
@@ -38,6 +41,10 @@ public class TestTank extends AdvancedRobot {
 		setBulletColor(_randColor);
 		setRadarColor(_randColor);
 		setScanColor(_randColor);
+		
+		while(g_Running) {
+			turnGunLeft(40);
+		}
 	}
 	
 	int scannedX = Integer.MIN_VALUE;
@@ -58,6 +65,17 @@ public class TestTank extends AdvancedRobot {
 		}
 	}
 	
+	public void onHitRobot(HitRobotEvent e) {
+		if(e.isMyFault()) {
+			if()
+		}
+	}
+	
+	public void onHitWall(HitWallEvent e) {
+		
+	}
+	
+
 	public void onPaint(Graphics2D g) {
 	    g.setColor(new Color(0xff, 0x00, 0x00, 0x80));
 	    g.drawLine(scannedX, scannedY, (int)getX(), (int)getY());
@@ -80,7 +98,7 @@ public class TestTank extends AdvancedRobot {
 			}
 		}
 	}
-
+	
 	@Override
 	public void onDeath(DeathEvent event) {
 		System.out.println("Dead! You were killed by: ");
@@ -89,6 +107,8 @@ public class TestTank extends AdvancedRobot {
 	@Override
 	public void onRoundEnded(RoundEndedEvent event) {
 		System.out.println("RoundEnded!");
+		g_Running = false;
+		
 	}
 
 	@Override
