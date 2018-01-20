@@ -67,7 +67,7 @@ public class TestTank extends AdvancedRobot {
 	
 	public void onHitRobot(HitRobotEvent e) {
 		if(e.isMyFault()) {
-			if()
+			if(true) {}
 		}
 	}
 	
