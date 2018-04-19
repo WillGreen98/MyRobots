@@ -1,5 +1,10 @@
 package robots;
 
+/**
+ * @author Will
+ * This is one of the first RoboCode tanks I have created.
+ */
+
 import static robocode.util.Utils.normalRelativeAngle;
 
 import java.awt.Color;
@@ -72,10 +77,9 @@ public class TestTank extends AdvancedRobot {
 	}
 	
 	public void onHitWall(HitWallEvent e) {
-		
+		turnGunLeft(180.0);
 	}
 	
-
 	public void onPaint(Graphics2D g) {
 	    g.setColor(new Color(0xff, 0x00, 0x00, 0x80));
 	    g.drawLine(scannedX, scannedY, (int)getX(), (int)getY());
