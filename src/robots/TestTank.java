@@ -40,6 +40,7 @@ public class TestTank extends AdvancedRobot {
 		Color _randColor = randColor();
 		setAdjustGunForRobotTurn(true);
 		setAdjustRadarForGunTurn(true);
+		setAdjustRadarForRobotTurn(true);
 			
 		setBodyColor(Color.BLACK);
 		setGunColor(_randColor);
@@ -65,19 +66,27 @@ public class TestTank extends AdvancedRobot {
 		double bearingFromGun = normalRelativeAngle(absoluteBearing - getGunHeading());
 		if(getGunHeat() == 0 && bullet == null) {
 			final Bullet lbullet = fireBullet(Math.min(3 - Math.abs(bearingFromGun), getEnergy() - 1));
-			
 			bullet = lbullet;
 		}
 	}
 	
 	public void onHitRobot(HitRobotEvent e) {
 		if(e.isMyFault()) {
-			if(true) {}
+			System.out.println(e.getName() + " My fault, sorry.");
+		} else {
+			double tank_Bearing = e.getBearing();
+			if(tank_Bearing <= 180) {
+				turnGunLeft(tank_Bearing);
+				fire(1);
+			} else {
+				turnGunRight(tank_Bearing);
+				fire(1);
+			}
 		}
 	}
 	
 	public void onHitWall(HitWallEvent e) {
-		turnGunLeft(180.0);
+
 	}
 	
 	public void onPaint(Graphics2D g) {
@@ -110,13 +119,13 @@ public class TestTank extends AdvancedRobot {
 
 	@Override
 	public void onRoundEnded(RoundEndedEvent event) {
-		System.out.println("RoundEnded!");
+		System.out.println("Round Ended!");
 		g_Running = false;
 		
 	}
 
 	@Override
 	public void onBattleEnded(BattleEndedEvent event) {
-		System.out.println("BattleEnded!");
+		System.out.println("Battle Ended!");
 	}
 }
