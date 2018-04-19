@@ -15,7 +15,7 @@ import java.util.EnumSet;
 import robocode.AdvancedRobot;
 
 public class Simple_Interactive extends AdvancedRobot {
-	int moveDirection;
+	direction moveDirection;
 	int turnDirection;
 	double moveAmount;
 	
@@ -28,7 +28,6 @@ public class Simple_Interactive extends AdvancedRobot {
 	
 	public void run() {
 		while(true) {
-			setAhead(moveAmount * moveDirection);
 			moveAmount = Math.max(0, moveAmount - 1);
 		}
 	}
@@ -37,22 +36,22 @@ public class Simple_Interactive extends AdvancedRobot {
 		switch(e.getKeyCode()) {
 		case VK_UP:
 		case VK_W:
-			moveDirection = 1;
+			moveDirection = direction.FORWARD;
 			moveAmount = Double.POSITIVE_INFINITY;
 			break;
 		case VK_DOWN:
 		case VK_S:
-			moveDirection = -1;
+			moveDirection = direction.BACKWARD;
 			moveAmount = Double.POSITIVE_INFINITY;
 			break;
-
 		case VK_RIGHT:
 		case VK_D:
+			moveDirection = direction.RIGHT;
 			turnDirection = 1;
 			break;
-
 		case VK_LEFT:
 		case VK_A:
+			moveDirection = direction.LEFT;
 			turnDirection = -1;
 			break;
 		}
@@ -64,7 +63,6 @@ public class Simple_Interactive extends AdvancedRobot {
 		case VK_W:
 		case VK_DOWN:
 		case VK_S:
-			moveDirection = 0;
 			moveAmount = 0;
 			break;
 		case VK_RIGHT:
