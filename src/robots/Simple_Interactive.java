@@ -7,6 +7,8 @@ package robots;
 
 import static java.awt.event.KeyEvent.*;
 import java.awt.event.KeyEvent;
+import java.util.EnumSet;
+
 /**
  * A very simple interactive bot
  */
@@ -16,6 +18,13 @@ public class Simple_Interactive extends AdvancedRobot {
 	int moveDirection;
 	int turnDirection;
 	double moveAmount;
+	
+	enum direction {
+		RIGHT,
+		LEFT,
+		FORWARD,
+		BACKWARD
+	}
 	
 	public void run() {
 		while(true) {
