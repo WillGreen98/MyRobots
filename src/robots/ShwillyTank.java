@@ -1,13 +1,13 @@
 package robots;
 
-import java.awt.Color;
-
-import robocode.AdvancedRobot;
-
 /**
  * @author Will
- *
+ * This is my Tank => Shwillybum
  */
+
+import java.awt.Color;
+import robocode.AdvancedRobot;
+
 public class ShwillyTank extends AdvancedRobot {
 	public void run() {
 		while(true) {
