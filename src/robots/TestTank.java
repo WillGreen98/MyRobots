@@ -2,7 +2,7 @@ package robots;
 
 /**
  * @author Will
- * This is one of the first RoboCode tanks I have created.
+ * This is one of the first RoboCode Tanks I have created.
  */
 
 import static robocode.util.Utils.normalRelativeAngle;
