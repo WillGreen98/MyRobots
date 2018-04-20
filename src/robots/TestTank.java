@@ -17,6 +17,7 @@ import robocode.Bullet;
 import robocode.DeathEvent;
 import robocode.HitRobotEvent;
 import robocode.HitWallEvent;
+import robocode.RobotDeathEvent;
 import robocode.RoundEndedEvent;
 import robocode.ScannedRobotEvent;
 import robocode.WinEvent;
@@ -112,8 +113,7 @@ public class TestTank extends AdvancedRobot {
 		}
 	}
 	
-	@Override
-	public void onDeath(DeathEvent event) {
+	public void onDeath(RobotDeathEvent RBE) {
 		System.out.println("Dead! You were killed by: ");
 	}
 
