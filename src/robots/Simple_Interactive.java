@@ -8,10 +8,6 @@ package robots;
 import static java.awt.event.KeyEvent.*;
 import java.awt.event.KeyEvent;
 import java.util.EnumSet;
-
-/**
- * A very simple interactive bot
- */
 import robocode.AdvancedRobot;
 
 public class Simple_Interactive extends AdvancedRobot {
