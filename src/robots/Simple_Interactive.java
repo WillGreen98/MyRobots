@@ -47,7 +47,10 @@ public class Simple_Interactive extends AdvancedRobot {
 		case VK_A:
 			directions.add(Direction.LEFT);
 			break;
+		case VK_SPACE:
+			fire(1);
 		}
+		
 	}
 
 	public void onKeyReleased(KeyEvent ke) {
