@@ -2,7 +2,7 @@ package robots;
 
 /**
  * @author Will
- * This is a simple interactive RoboCode Tank :) 
+ * This is a simple interactive RoboCode Tank :)
  */
 
 import static java.awt.event.KeyEvent.*;
@@ -16,6 +16,24 @@ public class Simple_Interactive extends AdvancedRobot {
 	Direction moveDirection;
 	private final Set<Direction> directions = new HashSet<Direction>();
 	
+	@Override
+	public void setAdjustGunForRobotTurn(boolean independent) {
+		independent = true;
+		super.setAdjustGunForRobotTurn(independent);
+	}
+	
+	@Override
+	public void setAdjustRadarForRobotTurn(boolean independent) {
+		independent = true;
+		super.setAdjustRadarForRobotTurn(independent);
+	}
+	
+	@Override
+	public void setAdjustRadarForGunTurn(boolean independent) {
+		independent = true;
+		super.setAdjustRadarForGunTurn(independent);
+	}
+	
 	enum Direction {
 		RIGHT,
 		LEFT,
@@ -23,9 +41,10 @@ public class Simple_Interactive extends AdvancedRobot {
 		BACKWARD
 	}
 	
+	// Main Body - Will get to this.
 	public void run() {
 		while(true) {
-			
+			execute();
 		}
 	}
 	
@@ -50,7 +69,6 @@ public class Simple_Interactive extends AdvancedRobot {
 		case VK_SPACE:
 			fire(1);
 		}
-		
 	}
 
 	public void onKeyReleased(KeyEvent ke) {
