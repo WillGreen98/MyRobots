@@ -7,15 +7,16 @@ package robots;
 
 import static java.awt.event.KeyEvent.*;
 import java.awt.event.KeyEvent;
-import java.util.EnumSet;
+import java.util.HashSet;
+import java.util.Set;
+
 import robocode.AdvancedRobot;
 
 public class Simple_Interactive extends AdvancedRobot {
-	direction moveDirection;
-	int turnDirection;
-	double moveAmount;
+	Direction moveDirection;
+	private final Set<Direction> directions = new HashSet<Direction>();
 	
-	enum direction {
+	enum Direction {
 		RIGHT,
 		LEFT,
 		FORWARD,
@@ -24,48 +25,48 @@ public class Simple_Interactive extends AdvancedRobot {
 	
 	public void run() {
 		while(true) {
-			moveAmount = Math.max(0, moveAmount - 1);
+			
 		}
 	}
 	
-	public void onKeyPressed(KeyEvent e) {
-		switch(e.getKeyCode()) {
+	public void onKeyPressed(KeyEvent ke) {
+		switch(ke.getKeyCode()) {
 		case VK_UP:
 		case VK_W:
-			moveDirection = direction.FORWARD;
-			moveAmount = Double.POSITIVE_INFINITY;
+			directions.add(Direction.FORWARD);
 			break;
 		case VK_DOWN:
 		case VK_S:
-			moveDirection = direction.BACKWARD;
-			moveAmount = Double.POSITIVE_INFINITY;
+			directions.add(Direction.BACKWARD);
 			break;
 		case VK_RIGHT:
 		case VK_D:
-			moveDirection = direction.RIGHT;
-			turnDirection = 1;
+			directions.add(Direction.RIGHT);
 			break;
 		case VK_LEFT:
 		case VK_A:
-			moveDirection = direction.LEFT;
-			turnDirection = -1;
+			directions.add(Direction.LEFT);
 			break;
 		}
 	}
 
-	public void onKeyReleased(KeyEvent e) {
-		switch (e.getKeyCode()) {
+	public void onKeyReleased(KeyEvent ke) {
+		switch(ke.getKeyCode()) {
 		case VK_UP:
 		case VK_W:
+			directions.remove(Direction.FORWARD);
+			break;
 		case VK_DOWN:
 		case VK_S:
-			moveAmount = 0;
+			directions.remove(Direction.BACKWARD);
 			break;
 		case VK_RIGHT:
 		case VK_D:
+			directions.remove(Direction.RIGHT);
+			break;
 		case VK_LEFT:
 		case VK_A:
-			turnDirection = 0;
+			directions.remove(Direction.LEFT);
 			break;
 		}
 	}
