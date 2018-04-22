@@ -41,24 +41,23 @@ public class TestTank extends AdvancedRobot {
 	} 
 	
 	public void run() {
-		Color[] colour_Init = new Color[3];
-		ArrayList<Color> colors = new ArrayList<>();
-		
-		for(int i=0; i<=3; i++) {
-			colour_Init[i] = randColor();
-			colors.add(colour_Init[i]);
-		}
-		
 		setAdjustGunForRobotTurn(true);
 		setAdjustRadarForGunTurn(true);
 		setAdjustRadarForRobotTurn(true);
 		
-		// TODO - Color
+		Color[] colour_Init = new Color[3];
+		ArrayList<Color> colors = new ArrayList<>();
+		
+		for(int i=0; i<=colour_Init.length; i++) {
+			colour_Init[i] = randColor();
+			colors.add(colour_Init[i]);
+		}
+	
 		setBodyColor(Color.BLACK);
-		setGunColor(colors[0]);
-		setBulletColor(colors[1]);
-		setRadarColor(colors[2]);
-		setScanColor(colors[3]);
+		setGunColor(colors.get(0));
+		setBulletColor(colors.get(1));
+		setRadarColor(colors.get(2));
+		setScanColor(colors.get(3));
 		
 		while(g_Running) {
 			turnGunLeft(40);
