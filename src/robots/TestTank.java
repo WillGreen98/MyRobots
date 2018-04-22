@@ -9,7 +9,10 @@ import static robocode.util.Utils.normalRelativeAngle;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 import java.util.Random;
+
+import com.sun.org.apache.bcel.internal.generic.NEW;
 
 import robocode.AdvancedRobot;
 import robocode.BattleEndedEvent;
@@ -38,16 +41,24 @@ public class TestTank extends AdvancedRobot {
 	} 
 	
 	public void run() {
-		Color _randColor = randColor();
+		Color[] colour_Init = new Color[3];
+		ArrayList<Color> colors = new ArrayList<>();
+		
+		for(int i=0; i<=3; i++) {
+			colour_Init[i] = randColor();
+			colors.add(colour_Init[i]);
+		}
+		
 		setAdjustGunForRobotTurn(true);
 		setAdjustRadarForGunTurn(true);
 		setAdjustRadarForRobotTurn(true);
-			
+		
+		// TODO - Color
 		setBodyColor(Color.BLACK);
-		setGunColor(_randColor);
-		setBulletColor(_randColor);
-		setRadarColor(_randColor);
-		setScanColor(_randColor);
+		setGunColor(colors[0]);
+		setBulletColor(colors[1]);
+		setRadarColor(colors[2]);
+		setScanColor(colors[3]);
 		
 		while(g_Running) {
 			turnGunLeft(40);
