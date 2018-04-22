@@ -6,9 +6,13 @@ package robots;
  */
 
 import static java.awt.event.KeyEvent.*;
+
+import java.awt.Color;
+import java.lang.*;
 import java.awt.event.KeyEvent;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Scanner;
 
 import robocode.AdvancedRobot;
 
@@ -42,8 +46,18 @@ public class Simple_Interactive extends AdvancedRobot {
 	}
 	
 	// Main Body - Will get to this.
+	Scanner usr_In = new Scanner(System.in);
+	
 	public void run() {
+		setBodyColor(Color.BLACK);
+		setGunColor();
+		setBulletColor();
+		setRadarColor();
+		setScanColor();
+		
 		while(true) {
+			System.out.println("Enter Color: ");
+			
 			execute();
 		}
 	}
