@@ -12,8 +12,6 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.Random;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
-
 import robocode.AdvancedRobot;
 import robocode.BattleEndedEvent;
 import robocode.Bullet;
@@ -28,7 +26,7 @@ import robocode.WinEvent;
 public class TestTank extends AdvancedRobot {
 	Bullet bullet;
 	boolean g_Running = true;
-	
+
 	public Color randColor() {
 		Random rand = new Random();
 		
@@ -64,8 +62,8 @@ public class TestTank extends AdvancedRobot {
 		}
 	}
 	
-	int scannedX = Integer.MIN_VALUE;
-	int scannedY = Integer.MIN_VALUE;
+	private int scannedX = Integer.MIN_VALUE;
+	private int scannedY = Integer.MIN_VALUE;
 
 	public void onScannedRobot(ScannedRobotEvent e) {
 	    double angle = Math.toRadians((getHeading() + e.getBearing()) % 360);
@@ -76,8 +74,7 @@ public class TestTank extends AdvancedRobot {
 	    double absoluteBearing = getHeading() + e.getBearing();
 		double bearingFromGun = normalRelativeAngle(absoluteBearing - getGunHeading());
 		if(getGunHeat() == 0 && bullet == null) {
-			final Bullet lbullet = fireBullet(Math.min(3 - Math.abs(bearingFromGun), getEnergy() - 1));
-			bullet = lbullet;
+			bullet = fireBullet(Math.min(3 - Math.abs(bearingFromGun), getEnergy() - 1));
 		}
 	}
 	
@@ -97,7 +94,6 @@ public class TestTank extends AdvancedRobot {
 	}
 	
 	public void onHitWall(HitWallEvent e) {
-
 	}
 	
 	public void onPaint(Graphics2D g) {
@@ -124,7 +120,7 @@ public class TestTank extends AdvancedRobot {
 	}
 	
 	public void onDeath(RobotDeathEvent RBE) {
-		System.out.println("Dead! You were killed by: ");
+	    System.out.println("Dead! You were killed by: ");
 	}
 
 	@Override
